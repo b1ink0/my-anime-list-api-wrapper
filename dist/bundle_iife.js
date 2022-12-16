@@ -96,7 +96,7 @@
       }
       const fn = () =>
         fetch__default["default"](
-          `${config.url}/users/${config.user_name}/animelist?fields=${config.fields}&limit=${config.limit}`,
+          `https://api.myanimelist.net/v2/users/${config.user_name}/animelist?status=${config.status}&limit=${config.limit}&offset=${config.offset}`,
           {
             method: "GET",
             headers: {
