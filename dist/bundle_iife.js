@@ -89,6 +89,35 @@
     };
   };
 
+  const anime_mal_user_list = (config) => {
+    return () => {
+      if (config.user_name == undefined) {
+        throw new ReferenceError("user_name perameter is needed.");
+      }
+      const fn = () =>
+        fetch__default["default"](
+          `${config.url}/users/${config.user_name}/animelist?fields=${config.fields}&limit=${config.limit}`,
+          {
+            method: "GET",
+            headers: {
+              "X-MAL-CLIENT-ID": config.client_id,
+            },
+          }
+        )
+          .then(async (res) => {
+            if (res.status !== 200) {
+              throw new Error(
+                `MAL error occurred. ${res.status}: ${await res.text()}`
+              );
+            }
+            return res.json();
+          })
+          .then((data) => data);
+
+      return fn;
+    };
+  };
+
   const seasonal_anime = (config) => {
     return () => {
       if (config.year == undefined) {
@@ -174,6 +203,7 @@
       anime_ranking: anime_ranking(config),
       seasonal_anime: seasonal_anime(config),
       suggested_anime: suggested_anime(config),
+      anime_mal_user_list: anime_mal_user_list(config)
     };
   };
 
