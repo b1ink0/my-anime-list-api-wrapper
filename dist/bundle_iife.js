@@ -67,7 +67,7 @@
       }
       const fn = () =>
         fetch__default["default"](
-          `${config.url}/ranking?ranking_type=${config.ranking_type}&limit=${config.limit}&offset${config.offset}&fields=${config.fields}`,
+          `${config.url}/ranking?ranking_type=${config.ranking_type}&limit=${config.limit}&offset=${config.offset}&fields=${config.fields}`,
           {
             method: "GET",
             headers: {
@@ -96,7 +96,7 @@
       }
       const fn = () =>
         fetch__default["default"](
-          `https://api.myanimelist.net/v2/users/${config.user_name}/animelist?${config.status === undefined ? "" : `status=${config.status}&`}limit=${config.limit}&offset=${config.offset}`,
+          `https://api.myanimelist.net/v2/users/${config.user_name}/animelist?${config.status === undefined ? "" : `status=${config.status}&`}limit=${config.limit}&offset=${config.offset}${config.sort === undefined ? "" : `&sort=${config.sort}`}`,
           {
             method: "GET",
             headers: {

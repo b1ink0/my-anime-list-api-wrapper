@@ -62,7 +62,7 @@ const anime_ranking = (config) => {
     }
     const fn = () =>
       fetch(
-        `${config.url}/ranking?ranking_type=${config.ranking_type}&limit=${config.limit}&offset${config.offset}&fields=${config.fields}`,
+        `${config.url}/ranking?ranking_type=${config.ranking_type}&limit=${config.limit}&offset=${config.offset}&fields=${config.fields}`,
         {
           method: "GET",
           headers: {
@@ -91,7 +91,7 @@ const anime_mal_user_list = (config) => {
     }
     const fn = () =>
       fetch(
-        `https://api.myanimelist.net/v2/users/${config.user_name}/animelist?${config.status === undefined ? "" : `status=${config.status}&`}limit=${config.limit}&offset=${config.offset}`,
+        `https://api.myanimelist.net/v2/users/${config.user_name}/animelist?${config.status === undefined ? "" : `status=${config.status}&`}limit=${config.limit}&offset=${config.offset}${config.sort === undefined ? "" : `&sort=${config.sort}`}`,
         {
           method: "GET",
           headers: {
